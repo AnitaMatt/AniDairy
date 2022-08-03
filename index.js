@@ -5,6 +5,7 @@ const methodOverride = require('method-override');
 const Notes = require("./models/newnote");
 const path = require("path");
 const date = require('date-and-time');
+const PORT = process.env.PORT || 3000;
 
 
 mongoose.connect('mongodb://localhost:27017/MyDiary');
@@ -28,7 +29,7 @@ app.use(express.static(path.join(__dirname,'public')));
 
 
 
-app.get("/diary/home", (req, res)=>{
+app.get("https://anitamatt.github.io/AniDairy/diary/home", (req, res)=>{
     res.render("home")
 })
 
@@ -82,6 +83,6 @@ app.delete("/diary/:id", async (req, res) => {
     res.redirect("/diary/mynotes");
 });
 
-app.listen(3000, ()=>{
-    console.log("LISTENING ON PORT 3000")
+app.listen(PORT, ()=>{
+    console.log(`LISTENING ON PORT ${PORT}`)
 })
