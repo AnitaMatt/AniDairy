@@ -1,0 +1,63 @@
+<%- include('partials/header'); -%>
+  <div class="container row5">
+    <div class="row align-items-center my-3">
+      <div class="col">
+        <h1 id="you">Dear Me</h1>
+        <p>Tell me about it</p>
+      </div>
+
+    </div>
+    <div>
+      <div class="col-lg-8 col-sm-12">
+        <form action="/diary" method="POST" novalidate class="validatedForm">
+          <div class="input-group mb-3">
+            <span class="input-group-text" id="basic-addon1">Title</span>
+            <input type="text" autofocus name="Notes[title]" required class="form-control" placeholder="Title"
+              id="title" aria-label="Username" aria-describedby="basic-addon1">
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              Dear me - We need a title
+            </div>
+          </div>
+          <div class="input-group">
+            <textarea class="form-control" name="Notes[textnote]" required rows="12" id="textnote"
+              aria-label="With textarea"></textarea>
+            <div class="valid-feedback">
+              Looks good!
+            </div>
+            <div class="invalid-feedback">
+              If you don't tell me! We can't talk about it
+            </div>
+          </div>
+          <button type="submit" class="btn savebtn mb-1">SAVE</button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+  <%- include('partials/footer'); -%>
+    <script>
+      (function () {
+        'use strict'
+
+        // Fetch all the forms we want to apply custom Bootstrap validation styles to
+        var forms = document.querySelectorAll('.validatedForm')
+
+        // Loop over them and prevent submission
+        Array.prototype.slice.call(forms)
+          .forEach(function (form) {
+            form.addEventListener('submit', function (event) {
+              if (!form.checkValidity()) {
+                event.preventDefault()
+                event.stopPropagation()
+              }
+
+              form.classList.add('was-validated')
+            }, false)
+          })
+      })()</script>
+    </body>
+
+    </html>
